@@ -5,6 +5,8 @@ import {
   InputLabel,
   FormControl,
   Slider,
+  Grid2 as Grid,
+  Box 
 } from "@mui/material";
 
 const ProductFilter = ({ onFilter }) => {
@@ -16,34 +18,36 @@ const ProductFilter = ({ onFilter }) => {
   }, [category, priceRange]);
 
   return (
-    <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
-      {/* Category Dropdown */}
-      <FormControl variant="outlined" sx={{ minWidth: 150 }}>
-        <InputLabel>Category</InputLabel>
-        <Select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          label="Category"
-        >
-          <MenuItem value="">All</MenuItem>
-          <MenuItem value="Electronics">Electronics</MenuItem>
-          <MenuItem value="Fashion">Fashion</MenuItem>
-          <MenuItem value="Grocery">Grocery</MenuItem>
-        </Select>
-      </FormControl>
+    <Box sx={{ width: "100%", padding: 2 }}>
+      <Grid container spacing={3} alignItems="center" justifyContent="center">
+        {/* Category Dropdown */}
+        <Grid item xs={12} sm={6} md={3}>
+          <FormControl fullWidth variant="outlined" sx={{ minWidth: 180 }}>
+            <InputLabel>Category</InputLabel>
+            <Select value={category} onChange={(e) => setCategory(e.target.value)} label="Category">
+              <MenuItem value="">All</MenuItem>
+              <MenuItem value="Electronics">Electronics</MenuItem>
+              <MenuItem value="Fashion">Fashion</MenuItem>
+              <MenuItem value="Grocery">Grocery</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
 
-      {/* Price Range Slider */}
-      <div style={{ width: "200px" }}>
-        <InputLabel>Price Range</InputLabel>
-        <Slider
-          value={priceRange}
-          onChange={(_, newValue) => setPriceRange(newValue)}
-          valueLabelDisplay="auto"
-          min={0}
-          max={80000}
-        />
-      </div>
-    </div>
+        {/* Price Range Slider */}
+        <Grid item xs={12} sm={6} md={4}>
+          <Box sx={{ width: "100%", paddingX: 2 }}>
+            <InputLabel sx={{ mb: 1 }}>Price Range</InputLabel>
+            <Slider
+              value={priceRange}
+              onChange={(_, newValue) => setPriceRange(newValue)}
+              valueLabelDisplay="auto"
+              min={0}
+              max={80000}
+            />
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 export default ProductFilter;
