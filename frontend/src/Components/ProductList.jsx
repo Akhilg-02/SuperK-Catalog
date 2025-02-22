@@ -3,6 +3,7 @@ import { useApi } from "../context/ApiContext";
 import ProductFilter from "./ProductFilter";
 import { useParams } from "react-router-dom";
 import { Card, CardContent, Typography, CircularProgress } from "@mui/material";
+import ProductDetailsDialog from "./ProductDetailsDialog";
 
 const ProductList = () => {
   const { products, loading, fetchProductsByStore } = useApi();
@@ -12,6 +13,9 @@ const ProductList = () => {
     category: "",
     priceRange: [0, 80000],
   });
+
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
 
     // Fetch products for the selected store
     useEffect(() => {
@@ -30,9 +34,7 @@ const ProductList = () => {
     setFilteredProducts(filtered);
   }, [products, filters]);
 
-  // const handleFilter = (newFilters) => {
-  //   setFilters(newFilters);
-  // };
+
 
   const handleFilter = useCallback((newFilters) => {
     setFilters(newFilters);
@@ -48,7 +50,11 @@ const ProductList = () => {
       filteredProducts.length > 0 ?
        (
         filteredProducts.map((product) => (
-          <Card key={product._id} sx={{ margin: 2, padding: 2 }}>
+          <Card 
+          key={product._id} 
+          sx={{ margin: 2, padding: 2 , cursor: "pointer"}}
+          onClick={() => setSelectedProduct(product)}
+          >
             <CardContent>
               <Typography variant="h6">{product.name}</Typography>
               <Typography>{product.description}</Typography>
@@ -63,6 +69,11 @@ const ProductList = () => {
         <Typography>No products found.</Typography>
       )
       }
+      <ProductDetailsDialog 
+        open={Boolean(selectedProduct)} 
+        onClose={() => setSelectedProduct(null)} 
+        product={selectedProduct} 
+      />
     </div>
   );
 };

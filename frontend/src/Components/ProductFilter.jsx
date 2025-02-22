@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { MenuItem, Select, InputLabel, FormControl, Slider} from "@mui/material";
+import {
+  MenuItem,
+  Select,
+  InputLabel,
+  FormControl,
+  Slider,
+} from "@mui/material";
 
 const ProductFilter = ({ onFilter }) => {
   const [category, setCategory] = useState("");
@@ -16,10 +22,7 @@ const ProductFilter = ({ onFilter }) => {
         <InputLabel>Category</InputLabel>
         <Select
           value={category}
-          onChange={(e) => 
-            setCategory(e.target.value)
-          } 
-          
+          onChange={(e) => setCategory(e.target.value)}
           label="Category"
         >
           <MenuItem value="">All</MenuItem>
@@ -39,7 +42,7 @@ const ProductFilter = ({ onFilter }) => {
           min={0}
           max={80000}
         />
-      </div>      
+      </div>
     </div>
   );
 };

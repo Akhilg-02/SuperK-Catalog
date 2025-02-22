@@ -10,12 +10,12 @@ function App() {
   return (
     <div className="App">
       <ApiProvider>
-        {/* <Header/> */}
+        <Header/>
         <Routes>
         <Route path="/" element={<StoreList/>} />
         <Route path="/store/:storeId" element={<ProductList/>} />
         </Routes>
-        {/* <Footer/> */}
+        <Footer/>
       </ApiProvider>
     </div>
   );
