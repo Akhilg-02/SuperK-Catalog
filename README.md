@@ -10,6 +10,58 @@ This project is a **full-stack catalog application** with a **ReactJS frontend**
 
 ---
 
+## 🛠️ Project Structure
+
+```
+/Catalog-Application
+│
+├── /frontend                # Frontend (React)
+│   ├── /public
+│   ├── /src
+│   │   ├── /components      # Reusable components
+│   │   │   ├── ProductFilter.js
+│   │   │   ├── ProductList.js
+│   │   │   ├── StoreList.js
+│   │   │   ├── ProductList.js
+│   │   │   ├── ProductDetailsDialog.js
+│   │   ├── /context         # Context API for global state management
+│   │   │   ├── ApiContext.js
+│   │   ├── /utils           # Utility functions
+│   │   ├── App.js
+│   │   ├── index.js
+│   ├── package.json
+│
+├── /server                # Backend (Node.js + Express)
+│   ├── /src
+|   ├── dotenv.js
+│   │   ├── /config        # Database connection
+│   │   │   ├── db.js
+│   │   ├── /models        # Mongoose models
+│   │   │   ├── Product.js
+│   │   │   ├── Store.js
+│   │   ├── /routes        # API routes
+│   │   │   ├── product.js
+│   │   │   ├── store.js
+│   │   ├── /controllers   # Business logic
+│   │   │   ├── product.controller.js
+│   │   │   ├── store.controller.js
+│   │   ├── server.js       # Main server entry
+│   ├── package.json
+│
+└── README.md              # Project documentation
+
+```
+
+## 📋 API Endpoints
+
+| Method | Endpoint                  | Description            |
+| ------ | ------------------------- | ---------------------- |
+| GET    | `/api/stores`             | Stores list            |
+| GET    | `/api/products/:storeId`  | Stores Product list    |
+
+
+---
+
 ## 🚀 Backend Setup (Node.js + Express + MongoDB)
 
 ### **1️⃣ Install Dependencies**
